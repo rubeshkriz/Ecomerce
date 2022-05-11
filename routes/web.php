@@ -31,9 +31,12 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('dashboard');
+        return view('admin.index');
     })->name('dashboard');
 });
+
+//Admin All Routes
+Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
 //DefaultAuthRoute
 Route::middleware([
