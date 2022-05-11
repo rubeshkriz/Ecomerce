@@ -37,7 +37,7 @@ Route::middleware([
 
 //DefaultAuthRoute
 Route::middleware([
-    'auth:sanctum',
+    'auth:sanctum,web',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
