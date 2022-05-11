@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Frontend\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,7 @@ use App\Http\Controllers\Backend\AdminProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //AdminAuthRoute
 
@@ -44,6 +44,12 @@ Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileE
 Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
 Route::get('/admin/change/password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
+
+
+////////////////////////////////////////////////////////////////////////////////
+//Admin All Routes
+Route::get('/', [IndexController::class, 'index']);
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //DefaultAuthRoute
