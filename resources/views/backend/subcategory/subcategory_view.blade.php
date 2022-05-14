@@ -73,7 +73,7 @@
 					  <div class="row">
 						<div class="col-12">                        
                                 <div class="form-group">
-								<h5>Sub Category English <span class="text-danger">:</span></h5>								
+								<h5>Category English <span class="text-danger">:</span></h5>								
 								<div class="controls">
 									<select id="category_id" name="category_id" class="form-control">
 										<option value="" selected="" disabled="" >Select Category</option>
