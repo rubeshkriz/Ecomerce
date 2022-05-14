@@ -70,6 +70,14 @@
   <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 
+  <!-- For Input TAGS -->
+  <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+
+  <!-- C K Editor -->
+  <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>	<script src="../assets/vendor_components/ckeditor/ckeditor.js"></script>
+	<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+
   <!-- Toaster -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>

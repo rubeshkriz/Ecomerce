@@ -57,17 +57,29 @@
           </ul>
         </li> 
 		  
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/product')?'active' : '' }}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Mailbox</span>
+            <i data-feather="mail"></i> <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Inbox</a></li>
-            <li><a href="mailbox_compose.html"><i class="ti-more"></i>Compose</a></li>
-            <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
+          <li  class="{{ ($route == 'add-product')? 'active' : '' }}"><a href="{{ route('add-product') }}"><i class="ti-more"></i>Add Product</a></li>
+            <li  class="{{ ($route == 'all.subcategory')? 'active' : '' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>Manage Product</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Mail</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Add Products</a></li>
+            <li><a href="mailbox_compose.html"><i class="ti-more"></i>Manage Products</a></li>
           </ul>
         </li>
 		

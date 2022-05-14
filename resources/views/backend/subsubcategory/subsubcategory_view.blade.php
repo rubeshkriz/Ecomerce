@@ -149,7 +149,7 @@
                   var category_id = $(this).val();
                   if(category_id){
                       $.ajax({
-                          url: "{{ url('/category/subcategory/ajax') }}/"+category_id,
+                          url: "{{ url('/category/sub-subcategory/ajax') }}/"+subcategory_id,
                           type:"GET",
                           dataType:"json",
                           success:function(data){

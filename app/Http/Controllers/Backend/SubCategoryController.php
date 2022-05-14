@@ -86,10 +86,15 @@ class SubCategoryController extends Controller
         return view('backend.subsubcategory.subsubcategory_view', compact('subsubcategory','categories'));
     }
 
-    ///////////////////Ajax Route////////////////
+    ///////////////////Ajax Route//////////////// 
     public function GetSubCategory($category_id){
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name_en','ASC')->get();
         return json_encode($subcat);
+    }
+
+    public function GetSubSubCategory($subcategory_id){
+        $subsubcat = SubSubCategory::where('subcategory_id',$subcategory_id)->orderBy('subsubcategory_name_en','ASC')->get();
+        return json_encode($subsubcat);
     }
     /////////////////////////////////////////////
 
