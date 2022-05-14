@@ -149,7 +149,7 @@
                   var category_id = $(this).val();
                   if(category_id){
                       $.ajax({
-                          url: "{{ url('/category/sub-subcategory/ajax') }}/"+subcategory_id,
+                          url: "{{ url('/category/subcategory/ajax') }}/"+category_id,
                           type:"GET",
                           dataType:"json",
                           success:function(data){
@@ -165,6 +165,29 @@
                       alert('danger');
                   }
               });
+
+
+              $('select[name="subcategory_id"]').on('change', function(){
+                  var subcategory_id = $(this).val();
+                  if(subcategory_id){
+                      $.ajax({
+                          url: "{{ url('/category/sub-subcategory/ajax') }}/"+subcategory_id,
+                          type:"GET",
+                          dataType:"json",
+                          success:function(data){
+                              var d = $('select[name="subsubcategory_id"]').empty();
+                              $.each(data, function(key, value){
+                                  $('select[name="subsubcategory_id"]').append(
+                                      '<option value="'+ value.id +'">' + value.subsubcategory_name_en +'</option>'
+                                      );                                      
+                              });
+                          },
+                      });
+                  }else{
+                      alert('danger');
+                  }
+              });
+
           });
       </script>
 
