@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 
 use App\Http\Controllers\Frontend\IndexController;
 
@@ -40,8 +41,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.index');
-    })->name('dashboard');
+    })->name('dashboard')->middleware('auth:admin');
 });
+
+Route::middleware(['auth:admin'])->group(function(){
 
 ////////////////////////////////////////////////////////////////////////////////
 //Admin All Routes
@@ -113,17 +116,33 @@ Route::prefix('product')->group(function(){
     Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');   
     Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');   
     Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');   
-    Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');    
+    Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');
+    Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+
     Route::get('/inactive/{id}', [ProductController::class, 'ProductInactive'])->name('product.inactive');    
     Route::get('/active/{id}', [ProductController::class, 'ProductActive'])->name('product.active');    
-    Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');    
-
-
 });
 
-
 ////////////////////////////////////////////////////////////////////////////////
-//User All Routes
+//Admin Slider All Routes
+Route::prefix('slider')->group(function(){
+    Route::get('/view', [SliderController::class, 'SliderView'])->name('manage-slider');
+    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+    Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+    Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+    Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+
+    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');    
+    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');  
+});
+
+});////////////////////////////////////////////////////////Admin AUTH Middleware END
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////User All Routes
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
 Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
