@@ -60,7 +60,7 @@
 <script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
