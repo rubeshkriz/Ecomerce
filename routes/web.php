@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -167,3 +168,13 @@ Route::middleware([
         return view('dashboard',compact('user'));
     })->name('dashboard');
 });
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////FRONT END ALL ROUTES///////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////MULTI LANGUAGE ALL ROUTES
+Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi.language');
+Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
