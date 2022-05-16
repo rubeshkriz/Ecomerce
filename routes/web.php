@@ -178,3 +178,7 @@ Route::middleware([
 ///////////MULTI LANGUAGE ALL ROUTES
 Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi.language');
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////FrontEnd Product routes
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
