@@ -186,3 +186,6 @@ Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']); //
 
 Route::get('subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']); ///SubCategoryWise
 Route::get('subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']); ///SubSubCategoryWise
+
+//////Product View "AJAX"////////
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']); ///Product Ajax

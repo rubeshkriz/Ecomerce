@@ -57,7 +57,7 @@
                      <span class="badge badge-pill badge-danger"> In Active </span>
                      @endif
                    </td>                   
-                   <td width="25%">
+                   <td width="30%">
                        <a href="{{ route('product.edit', $item->id) }}" class="btn btn-primary" title="Product Detail Data">
                            <i class="fa fa-eye"></i>
                        </a>

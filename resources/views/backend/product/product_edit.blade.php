@@ -179,22 +179,18 @@
                                         <div class="form-group">
                                             <h5>Product Size En <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                            <input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput" required="">
-                                            @error('product_size_en')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror 
+                                            <input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput" >
+
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <h5>Product Tags Hin <span class="text-danger">*</span></h5>
+                                            <h5>Product Size Hin <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                            <input type="text" name="product_size_hin" class="form-control" value="{{ $products->product_size_hin }}" data-role="tagsinput" required="">
-                                            @error('product_size_hin')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror 
+                                            <input type="text" name="product_size_hin" class="form-control" value="{{ $products->product_size_hin }}" data-role="tagsinput" >
+
                                             </div>
                                         </div>
                                     </div>
