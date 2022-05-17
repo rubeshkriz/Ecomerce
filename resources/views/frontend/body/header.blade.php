@@ -170,7 +170,9 @@
 
                         @foreach($subcategories as $subcategory)
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                          <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">
                             <h2 class="title">{{ $subcategory->subcategory_name_en }}</h2>
+                            </a>
                             <ul class="links">
                               <!-- Sub Sub Category Started -->
                                 @php
@@ -178,7 +180,7 @@
                                 @endphp
 
                               @foreach($subsubcategories as $subsubcategory)
-                              <li><a href="#">{{ $subsubcategory->subsubcategory_name_en }}</a></li>
+                              <li><a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en) }}">{{ $subsubcategory->subsubcategory_name_en }}</a></li>
                               @endforeach <!--  // End Sub Sub Category ForEach -->
                               
                             </ul>
