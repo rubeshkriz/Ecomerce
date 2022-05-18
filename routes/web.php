@@ -199,3 +199,6 @@ Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']); ///Min
 
 //////REMOVE TO MINI -- CART "AJAX"////////
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']); ///Mini Cart Ajax
+
+//////Wish List////////
+Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']); 

@@ -66,6 +66,10 @@ class CartController extends Controller
         return response()->json(['success' => 'Product Removed From Cart']);
     }//end Method
 
+    public function AddToWishlist(Requesst $request,$product_id){
+        
+    }//end Method
+
 
 
 }
