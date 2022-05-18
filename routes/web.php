@@ -205,3 +205,4 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 //////Wish List////////
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']); 
 Route::get('/wishlist/', [WishlistController::class, 'viewWishlist'])->name('wishlist'); 
+Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']); 
