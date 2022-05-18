@@ -68,6 +68,8 @@
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
     @if(Session::has('message'))
@@ -99,7 +101,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><strong><span id="pname"></span></strong></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -127,22 +129,25 @@
           </div>
           <div class="col-md-4">
           <div class="form-group" id="colorArea">
-            <label for="exampleFormControlSelect1">Choose Color:</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="color">
+            <label for="color">Choose Color:</label>
+            <select class="form-control" id="color" name="color">
 
             </select>
           </div>
           <div class="form-group" id="sizeArea">
-            <label for="exampleFormControlSelect1">Choose Size:</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="size">
+            <label for="size">Choose Size:</label>
+            <select class="form-control" id="size" name="size">
 
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Quantity:</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" value="1">
+            <label for="qty">Quantity:</label>
+            <input type="number" class="form-control" id="qty" value="1" min="1">
           </div>
-          <button type="submit" class="btn btn-primary mb-2">Add To Cart</button>
+
+          <input type="hidden" id="product_id" >
+
+          <button type="submit" class="btn btn-primary mb-2" onclick="addToCart()">Add To Cart</button>
           </div>
         </div>
       </div><!--  //end modal body -->
@@ -169,6 +174,9 @@
               $('#pbrand').text(data.product.brand.brand_name_en);
 
               $('#pimage').attr('src','/'+data.product.product_thambnail);  ///HoW to use IMAGE
+
+              $('#product_id').val(id);                                     ///Hidden Input Acess
+              $('#qty').val(1);                                     
 
               //product price
               if(data.product.discount_price == null){                      ///Conditioned Data Fixing
@@ -216,6 +224,138 @@
             }
           })
         }
+
+        //////////////////////end product view modal
+
+            //start add to cart product
+
+            function addToCart(){
+              var product_name = $('#pname').text();
+              var id = $('#product_id').val();
+              var color = $('#color option:selected').text();
+              var size = $('#size option:selected').text();
+              var quantity = $('#qty').val();
+
+              $.ajax({
+                type: "post",
+                dataType: "json",
+                data:{
+                  color:color, size:size, quantity:quantity, product_name:product_name
+                },
+                url: "/cart/data/store/"+id,
+                success:function(data){
+                  miniCart()
+                  $('#closeModal').click();
+                  // console.log(data);
+
+                  //Start Message => LIKE TOASTER "SWEET ALERT"
+                  const Toast = Swal.mixin({
+                                            toast:true,
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 3000
+                                          })
+                                      if($.isEmptyObject(data.error)){
+                                        Toast.fire({
+                                          type: 'success',
+                                          title: data.success
+                                        })
+                                      }else{
+                                        Toast.fire({
+                                          type: 'Error',
+                                          title: data.error
+                                        })
+                                      }
+                  //End Message 
+                }
+              })
+
+            }
+
+
+            //End add to cart product
+      </script>
+
+      <script type="text/javascript">
+
+        function miniCart(){
+          $.ajax({
+            type: 'GET',
+            url: '/product/mini/cart',
+            dataType:'json',
+            success:function(response){
+
+              $('span[id="cartSubTotal"]').text(response.cartTotal);
+              $("#cartQty").text(response.cartQty);
+
+              var miniCart = ""
+
+              $.each(response.carts, function(key,value){
+                  miniCart += `<div class="cart-item product-summary">
+                  <div class="row">
+                    <div class="col-xs-4">
+                      <div class="image"> <a href="detail.html"><img src="/${value.options.image}" alt=""></a> </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
+                      <div class="price">$ ${value.price} * ${value.qty} psc</div>
+                    </div>
+                    <div class="col-xs-1 action"> <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button> </div>
+                  </div>
+                </div>
+                <!-- /.cart-item -->
+                <div class="clearfix"></div>
+                <hr>`
+              
+              });
+              $('#miniCart').html(miniCart);
+
+            }
+          })
+        }
+
+        miniCart();
+
+        /////Mini Cart Remove Start
+
+        function miniCartRemove(rowId){
+          $.ajax({
+            type: 'GET',
+            url: '/minicart/product-remove/'+rowId,
+            dataType: 'json',
+            success:function(data){
+              miniCart();
+
+              ///start Message
+              const Toast = Swal.mixin({
+                                        toast:true,
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        showConfirmButton: false,
+                                        timer: 3000
+                                      })
+                                  if($.isEmptyObject(data.error)){
+                                    Toast.fire({
+                                      type: 'success',
+                                      title: data.success
+                                    })
+                                  }else{
+                                    Toast.fire({
+                                      type: 'Error',
+                                      title: data.error
+                                    })
+                                  } 
+              ///End Message
+
+            }
+          })
+        }
+
+
+
+        /////Mini Cart Remove END
+
       </script>
 
     </div>
