@@ -429,7 +429,7 @@
           <button data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productview(this.id)" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i>Add To Cart</button>
 					</td>
 					<td class="col-md-1 close-btn">
-						<a href="#" class=""><i class="fa fa-times"></i></a>
+						<button type="submit" id="${value.id}" onclick="wishlistRemove(this.id)" class=""><i class="fa fa-times"></i></button>
 					</td>
 				</tr>`
               
@@ -441,6 +441,44 @@
         }
 
         wishlist();
+
+                /////Wishlist Remove Start
+
+                function wishlistRemove(id){
+          $.ajax({
+            type: 'GET',
+            url: '/wishlist-remove/'+id,
+            dataType: 'json',
+            success:function(data){
+              wishlist();               ///ignore refreshing PAGE
+
+              ///start Message
+              const Toast = Swal.mixin({
+                                        toast:true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 3000
+                                      })
+                                  if($.isEmptyObject(data.error)){
+                                    Toast.fire({
+                                      type: 'success',
+                                      icon: 'success',
+                                      title: data.success
+                                    })
+                                  }else{
+                                    Toast.fire({
+                                      type: 'error',
+                                      icon: 'error',
+                                      title: data.error
+                                    })
+                                  } 
+              ///End Message
+
+            }
+          })
+        }
+
+        /////Wishlist Remove END
       </script>
 
 
