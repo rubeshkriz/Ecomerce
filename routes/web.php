@@ -211,8 +211,10 @@ function(){
     Route::get('/wishlist/', [WishlistController::class, 'viewWishlist'])->name('wishlist'); 
     Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']); 
     Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']); 
-    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart'); 
 
+    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart'); 
     Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']); 
+    Route::get('/cart-remove/{rowId}', [CartPageController::class, 'RemoveCartProduct']); 
+
 });
 

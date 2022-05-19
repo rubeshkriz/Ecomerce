@@ -24,4 +24,10 @@ class CartPageController extends Controller
             'cartTotal' => round($cartTotal),
         ));
     }
+
+    public function RemoveCartProduct($rowId){
+        Cart::remove($rowId);
+
+        return response()->json(['success' => 'This product Removed from Cart']);
+    }
 }
