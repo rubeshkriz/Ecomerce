@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Wishlist Page
+MyCart Page
 @endsection
 
 <div class="breadcrumb">
