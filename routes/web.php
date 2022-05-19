@@ -151,25 +151,30 @@ Route::prefix('coupons')->group(function(){
     Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
     Route::post('/update', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
     Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
-
-    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');    
-    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');  
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-//Admin Shipping All Routes
+//Admin Shipping Devision All Routes
 Route::prefix('shipping')->group(function(){
     Route::get('/view', [ShippingAreaController::class, 'DivisionView'])->name('manage-division');
     Route::post('/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
     Route::get('/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division.edit');
     Route::post('/update', [ShippingAreaController::class, 'DivisionUpdate'])->name('division.update');
     Route::get('/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division.delete');
+});
 
-    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');    
-    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');  
+////////////////////////////////////////////////////////////////////////////////
+//Admin Shipping District All Routes
+Route::prefix('shipping')->group(function(){
+    Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
+    Route::post('/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division.edit');
+    Route::post('/update', [ShippingAreaController::class, 'DivisionUpdate'])->name('division.update');
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division.delete');
 });
 
 });////////////////////////////////////////////////////////Admin AUTH Middleware END
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
