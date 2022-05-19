@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\CartController;
 
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\User\CartPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -210,5 +211,8 @@ function(){
     Route::get('/wishlist/', [WishlistController::class, 'viewWishlist'])->name('wishlist'); 
     Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']); 
     Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']); 
+    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart'); 
+
+    Route::get('/get-cart-product', [CartPageController::class, 'GetCartProduct']); 
 });
 
