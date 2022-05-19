@@ -167,10 +167,10 @@ Route::prefix('shipping')->group(function(){
 //Admin Shipping District All Routes
 Route::prefix('shipping')->group(function(){
     Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
-    Route::post('/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
-    Route::get('/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division.edit');
-    Route::post('/update', [ShippingAreaController::class, 'DivisionUpdate'])->name('division.update');
-    Route::get('/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division.delete');
+    Route::post('/store', [ShippingAreaController::class, 'DistrictStore'])->name('district.store');
+    Route::get('/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
+    Route::post('/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district.update');
+    Route::get('/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');
 });
 
 });////////////////////////////////////////////////////////Admin AUTH Middleware END
