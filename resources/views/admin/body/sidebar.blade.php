@@ -94,6 +94,18 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/shipping')?'active' : '' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Shipping Area</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li  class="{{ ($route == 'manage-division')? 'active' : '' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>Ship Division</a></li>
+          </ul>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i data-feather="mail"></i> <span>Mail</span>
