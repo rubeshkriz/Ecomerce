@@ -27,7 +27,7 @@
 								<h5>Select Division <span class="text-danger">:</span></h5>								
 								<div class="controls">
 									<select id="division_id" name="division_id" class="form-control">
-										<option value="" selected="" disabled="" >Select Category</option>
+										<option value="" selected="" disabled="" >Select Division</option>
                                         @foreach($division as $div)
 										<option value="{{ $div->id }}" {{ $div->id == $district->division_id ? 'selected' : '' }}>{{ $div->division_name }}</option>	
                                         @endforeach									
