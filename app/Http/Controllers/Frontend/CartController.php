@@ -15,6 +15,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\Coupon;
+use App\Models\ShipDivision;
 use Illuminate\Support\Facades\Session;
 
 
@@ -153,7 +154,9 @@ class CartController extends Controller
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
-                return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal'));
+                $divisions = ShipDivision::orderBy('division_name','ASC')->get();
+
+                return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal','divisions'));
             }else{
                 $notification = array(
                     'message' => 'Shop Atleast One Product To Checkout',

@@ -39,48 +39,93 @@ My Checkout
 					<h4 class="checkout-subtitle"><b>Shipping Address	</b></h4>
 					<form class="register-form" role="form">
 						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Shipping Name<span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b><span>*</span></label>
 					    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
 					  </div>
 
 						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Shipping Email<span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>Shipping Email</b><span>*</span></label>
 					    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email }}" required="">
 					  </div>
 
 						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Phone<span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>Phone</b><span>*</span></label>
 					    <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
 					  </div>
 
 						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Post Code<span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>Post Code</b><span>*</span></label>
 					    <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="PostCode" required="">
 					  </div>
 
-					</form>
+					
 				</div>	
 				<!-- guest-login -->
 
 				<!-- already-registered-login -->
 				<div class="col-md-6 col-sm-6 already-registered-login">
-					<h4 class="checkout-subtitle">Already registered?</h4>
-					<p class="text title-tag-line">Please log in below:</p>
-					<form class="register-form" role="form">
-						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-					    <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="">
+
+				
+				<div class="col-md-12">
+                                        <div class="form-group">
+								            <h5><b>Division Select</b> <span class="text-danger">*</span></h5>
+								            <div class="controls">
+                                            <select name="division_id" id="select" required="" class="form-control">
+                                                <option value="" selected="" disabled="" >Select Division</option>
+                                                @foreach($divisions as $item)
+                                                <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                                @endforeach                                                
+                                            </select>
+                                            @error('division_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+								            </div>
+							            </div>
+                                    
+
+                                        <div class="form-group">
+								            <h5><b>District Select</b> <span class="text-danger">*</span></h5>
+								            <div class="controls">
+                                            <select name="district_id" id="select" required="" class="form-control">
+                                                <option value="" selected="" disabled="" >Select District</option>
+                                                @foreach($divisions as $item)
+                                                <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                                @endforeach                                                
+                                            </select>
+                                            @error('district_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+								            </div>
+							            </div>
+
+                                        <div class="form-group">
+								            <h5><b>State Select</b> <span class="text-danger">*</span></h5>
+								            <div class="controls">
+                                            <select name="state_id" id="select" required="" class="form-control">
+                                                <option value="" selected="" disabled="" >Select State</option>
+                                                @foreach($divisions as $item)
+                                                <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                                @endforeach                                                
+                                            </select>
+                                            @error('state_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+								            </div>
+							            </div>
+
+										<div class="form-group">
+					    <label class="info-title" for="exampleInputEmail1">Notes<span>*</span></label>
+						<textarea class="form-control" name="notes" cols="30" rows="5" placeholder="Notes"></textarea>
 					  </div>
-					  <div class="form-group">
-					    <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-					    <input type="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" placeholder="">
-					    <a href="#" class="forgot-password">Forgot your Password?</a>
-					  </div>
+
+
+                                    
+
 					  <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
 					</form>
 				</div>	
-				<!-- already-registered-login -->		
 
+				</div>			
 			</div>			
 		</div>
 		<!-- panel-body  -->
