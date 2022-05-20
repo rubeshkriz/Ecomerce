@@ -648,6 +648,17 @@
             }
           })
         }
+
+        function couponCalculation(){
+          $.ajax({
+            type: 'GET',
+            url: "{{ url('/coupon-calculation') }}",
+            dataType: 'json',
+            success: function(data){
+              
+            }
+          })
+        }
       </script>
 
       <!-- /////////////////////////////////////////           Coupon Apply End           /////////////////////// -->
