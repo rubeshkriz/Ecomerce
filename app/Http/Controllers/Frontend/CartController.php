@@ -5,19 +5,27 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Product;
-use App\Models\Coupon;
 
-use Gloudemans\Shoppingcart\Facades\Cart;
+
 use Auth;
-use App\Models\Wishlist;
 use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
+
+use App\Models\Product;
+use App\Models\Wishlist;
+use App\Models\Coupon;
 use Illuminate\Support\Facades\Session;
 
 
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id){
+
+        if(Session::has('coupon')){
+            Session::forgot('coupon');
+        }
+        
         $product = Product::findOrFail($id);
 
         if($product->discount_price == NULL){

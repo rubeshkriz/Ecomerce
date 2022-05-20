@@ -547,8 +547,11 @@
             url: '/user/cart-remove/'+id,
             dataType: 'json',
             success:function(data){
+              couponCalculation();
               cart();               ///ignore refreshing PAGE
               miniCart();
+              $('#couponField').show();
+              $('#coupon_name').val('');
 
               ///start Message
               const Toast = Swal.mixin({
@@ -585,6 +588,7 @@
             url:"/cart-increment/"+rowId,
             dataType:'json',
             success:function(data){
+              couponCalculation();
               cart();
               miniCart();
             }
@@ -599,6 +603,7 @@
             url:"/cart-decrement/"+rowId,
             dataType:'json',
             success:function(data){
+              couponCalculation();
               cart();
               miniCart();
             }
