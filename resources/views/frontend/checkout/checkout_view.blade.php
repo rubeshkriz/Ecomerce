@@ -37,7 +37,8 @@ My Checkout
 				<!-- guest-login -->			
 				<div class="col-md-6 col-sm-6 already-registered-login">
 					<h4 class="checkout-subtitle"><b>Shipping Address	</b></h4>
-					<form class="register-form" role="form">
+					<form class="register-form" role="form" action="{{ route('checkout.store') }}" method="POST">
+                        @csrf
 						<div class="form-group">
 					    <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b><span>*</span></label>
 					    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
@@ -117,8 +118,6 @@ My Checkout
 
                                     
 
-					  <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
-					</form>
 				</div>	
 
 				</div>			
@@ -133,6 +132,7 @@ My Checkout
 					  	
 					</div><!-- /.checkout-steps -->
 				</div>
+
 				<div class="col-md-4">
 					<!-- checkout-progress-sidebar -->
 <div class="checkout-progress-sidebar ">
@@ -173,6 +173,47 @@ My Checkout
 	</div>
 </div> 
 <!-- checkout-progress-sidebar -->				</div>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="col-md-4">
+					<!-- checkout-progress-sidebar -->
+<div class="checkout-progress-sidebar ">
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+		    </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">Stripe</label>
+                        <input type="radio" name="payment_method" value="stripe">
+                        <img src="{{ asset('frontend/assets/images/payments/4.png') }}" alt="">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Card</label>
+                        <input type="radio" name="payment_method" value="card">
+                        <img src="{{ asset('frontend/assets/images/payments/3.png') }}" alt="">
+                    </div>
+                    <div class="col-md-4">
+                    <label for="">Cash</label>
+                    <input type="radio" name="payment_method" value="cash">
+                    <img src="{{ asset('frontend/assets/images/payments/2.png') }}" alt="">
+                    </div>
+                </div>
+<hr>
+					  <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment Step</button>
+
+		</div>
+	</div>
+</div> 
+<!-- checkout-progress-sidebar -->				</div>
+
+</form>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
 			</div><!-- /.row -->
 		</div><!-- /.checkout-box -->
 
