@@ -92,6 +92,10 @@ class CartController extends Controller
         }
     }//end Method
 
+    public function CouponApply(Request $request){
+        
+    }
+
 
 
 }

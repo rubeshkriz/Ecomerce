@@ -267,3 +267,5 @@ Route::get('/user/cart-remove/{rowId}', [CartPageController::class, 'RemoveCartP
 Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']); 
 Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement']); 
 
+////////////////       Coupon Option        ////////////////
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']); 

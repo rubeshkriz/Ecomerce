@@ -612,6 +612,26 @@
       <!-- //////////   End  Load  My-Cart page ////////////////// -->
 
 
+      <!-- /////////////////////////////////////////           Coupon Apply Start           /////////////////////// -->
+      
+      <script>
+        function applyCoupon(){
+          var coupon_name = $('#coupon_name').val();
+          $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {coupon_name:coupon_name}
+            url:"{{ url('/coupon-apply') }}",
+            success:function(data){
+              
+            }
+          })
+        }
+      </script>
+
+      <!-- /////////////////////////////////////////           Coupon Apply End           /////////////////////// -->
+
+
     </div>
   </div>
 </div>
