@@ -25,7 +25,7 @@ class CartController extends Controller
         if(Session::has('coupon')){
             Session::forgot('coupon');
         }
-        
+
         $product = Product::findOrFail($id);
 
         if($product->discount_price == NULL){
@@ -142,6 +142,32 @@ class CartController extends Controller
         ///Remove Coupon Data IN SESSION
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Removed Successfully']);
+    }
+
+    //////Checkout
+    public function CheckoutCreate(){
+        if(Auth::check()){
+            if(Cart::total() > 0){
+
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+
+                return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal'));
+            }else{
+                $notification = array(
+                    'message' => 'Shop Atleast One Product To Checkout',
+                    'alert-type' => 'error'
+                );       
+                return redirect()->to('/')->with($notification);
+            }
+        }else{
+            $notification = array(
+                'message' => 'You Need To Login First',
+                'alert-type' => 'error'
+            );       
+            return redirect()->route('login')->with($notification);
+        }
     }
 
 
