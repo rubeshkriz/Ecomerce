@@ -632,7 +632,13 @@
             success:function(data){
 
               couponCalculation();
+
+              /////////////// Coupon Form Condition////////////
+              if(data.valdity == true){
               $('#couponField').hide();
+              }
+
+
 
                           ///start Message
                           const Toast = Swal.mixin({
