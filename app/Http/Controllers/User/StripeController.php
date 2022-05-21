@@ -9,9 +9,13 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Session;
-use Carbon\Carbon;
 
+use Carbon\Carbon;
 use Auth;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\orderMail;
+
 
 class StripeController extends Controller
 {
@@ -63,6 +67,20 @@ class StripeController extends Controller
           'created_at' => Carbon::now(),
         ]);
 
+        /////////    regestering Email Start              ///////////////
+          $invoice = Order::findOrFail($order_id);
+          $data = [
+            "invoice_no" =>  $invoice->invoice_no,
+            "amount" =>  $total_amount,
+            "name" =>  $invoice->name,
+            "email" => $invoice->email,
+          ];
+
+          Mail::to($request->email)->send(new OrderMail($data));
+
+        /////////      regestering Email End             ///////////////
+
+
         $carts = Cart::content();
         foreach($carts as $cart){
           OrderItem::insert([
@@ -87,7 +105,8 @@ class StripeController extends Controller
           'alert-type' => 'success'
       );       
       return redirect()->route('dashboard')->with($notification);   
-
-
     }
+
+
+
 }
