@@ -36,6 +36,8 @@
 <!-- Toaster CDN -->
 <link rel="stylesheet" type="text/css" href="https:cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+<!---------------------------------- Stipe Payment ---------------------------->
+<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body class="cnt-home">
 
