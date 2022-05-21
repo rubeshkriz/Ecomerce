@@ -241,8 +241,7 @@ Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProd
 Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);
 
 /////////////////Stripe Payment///////////
-Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
- 
+Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order'); 
 
 });
 
