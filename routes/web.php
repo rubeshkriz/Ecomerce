@@ -253,6 +253,9 @@ Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.ord
 Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
 Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
+/////////////////Invoice DOWNLOAD///////////
+Route::get('/invoice-download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
