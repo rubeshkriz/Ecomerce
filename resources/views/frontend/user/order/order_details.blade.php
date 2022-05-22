@@ -98,6 +98,13 @@
 
 <div class="row">
     <div class="col-md-8">
+    <div class="card">
+                    <div class="card-header">
+                        <h4>Product Details</h4>
+                    </div>
+                    <hr>
+                    <div class="card-body" style="background: #E9EBEC;">
+
                 <div class="table-responsive">
 
                 <table class="table">
@@ -159,6 +166,10 @@
 
 
                 </div>
+    </div>
+    </div>
+
+
             </div>
 </div>
 
