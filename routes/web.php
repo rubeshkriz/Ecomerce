@@ -231,7 +231,7 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////// Login MIddelware///////////////////////////////////////////////
+//////////////////////////////////////// Login MIddelware ///////////////////////////////////////////////
 
 Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){
 
@@ -247,6 +247,7 @@ Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('st
 
 /////////////////My Orders///////////
 Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
+Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
 });
 
