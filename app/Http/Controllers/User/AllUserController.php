@@ -18,7 +18,7 @@ use App\Mail\orderMail;
 class AllUserController extends Controller
 {
     public function MyOrders(){
-        $orders = Order::where('user_id',Auth::id())->orderBy('id','DESC')->get();
+        $orders = Order::with('division','district','state','user')->where('user_id',Auth::id())->orderBy('id','DESC')->get();
         return view('frontend.user.order.order_view',compact('orders'));
     }
 
