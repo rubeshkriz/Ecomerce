@@ -21,6 +21,7 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\AllUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -229,7 +230,8 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 // Add to Wishlist
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// Login MIddelware///////////////////////////////////////////////
 
 Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){
 
@@ -243,9 +245,13 @@ Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistP
 /////////////////Stripe Payment///////////
 Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order'); 
 
+/////////////////My Orders///////////
+Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
+
 });
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  // My Cart Page All Routes
 Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
