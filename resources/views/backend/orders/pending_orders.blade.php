@@ -43,9 +43,7 @@
                        <a href="{{ route('pending.order.details', $item->id) }}" class="btn btn-info btn-sm" title="Edit Data">
                            <i class="fa fa-eye"></i>
                        </a>
-                       <a href="{{ route('coupon.delete', $item->id) }}" id="delete" class="btn btn-danger btn-sm" title="Delete Data">
-                       <i class="fa fa-trash"></i>
-                       </a>
+                       
                    </td>                   
                </tr>   
                @endforeach            
