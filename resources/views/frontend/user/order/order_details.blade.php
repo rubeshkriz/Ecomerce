@@ -176,11 +176,26 @@
 @if($order->status !== "delivered")
 
 @else
+    @php
+    $order = App\Models\Order::where('id',$order->id)->where('return_reason','=',NULL)->first();
+    @endphp
+
+    @if($order)
+<form action="{{ route('return.order',$order->id) }}" method="post">
+    @csrf
 <div class="form-group">
     <label for="label" style="display: block;">Order Return Reason:</label>
     <textarea name="return_reason" id="" calss="form-control" cols="30" rows="05"></textarea>
 </div>
+<button type="submit" class="btn btn-danger">Submit</button>
+</form>
+    @else
+<span class="badge badge-pill badge-warning" style="background: red">You'll have send this Product As Return Request</span>
+    @endif
 @endif
+
+<br>
+<br>
 
 
 
