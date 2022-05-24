@@ -47,7 +47,23 @@
                             </td>
                             <td class="col-md-2">
                                 <label for="">
-                                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }}</span>
+                                    @if($order->status == 'Pending')
+                                    <span class="badge badge-pill badge-warning" style="background: #800080;">Pending</span>
+                                    @elseif($order->status == 'confirm')
+                                    <span class="badge badge-pill badge-warning" style="background: #FFA500;">confirm</span>
+                                    @elseif($order->status == 'processing')
+                                    <span class="badge badge-pill badge-warning" style="background: #808000;">processing</span>
+                                    @elseif($order->status == 'picked')
+                                    <span class="badge badge-pill badge-warning" style="background: #1ba112;">picked</span>
+                                    @elseif($order->status == 'shipped')
+                                    <span class="badge badge-pill badge-warning" style="background: #b71b1b;">shipped</span>
+                                    @elseif($order->status == 'delivered')
+                                    <span class="badge badge-pill badge-warning" style="background: #2d8ebd;">delivered</span>
+                                    @elseif($order->status == 'cancel')
+                                    <span class="badge badge-pill badge-warning" style="background: #9d488e;">cancel</span>
+                                    @elseif($order->status == 'confirm')
+                                    <span class="badge badge-pill badge-warning" style="background: #f30000;">confirm</span>
+                                    @endif
                                 </label>
                             </td>
                             <td class="col-md-1">
