@@ -150,37 +150,21 @@
           </ul>
         </li>
 
-
-
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/return')?'active' : '' }}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Mail</span>
+            <i data-feather="mail"></i> <span>Return Order</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Add Products</a></li>
-            <li><a href="mailbox_compose.html"><i class="ti-more"></i>Manage Products</a></li>
+            <li  class="{{ ($route == 'return.request')? 'active' : '' }}"><a href="{{ route('return.request') }}"><i class="ti-more"></i>Return request</a></li>
+            <li  class="{{ ($route == 'all.request')? 'active' : '' }}"><a href="{{ route('all.request') }}"><i class="ti-more"></i>All request</a></li>
           </ul>
         </li>
-		
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="file"></i>
-            <span>Pages</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="ti-more"></i>Profile</a></li>
-            <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
-            <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
-            <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>
-            <li><a href="timeline.html"><i class="ti-more"></i>Timeline</a></li>
-          </ul>
-        </li> 		  
+
+
+	  
 		 
         <li class="header nav-small-cap">User Interface</li>
 		  

@@ -59,6 +59,11 @@
                                     <span class="badge badge-pill badge-warning" style="background: #b71b1b;">shipped</span>
                                     @elseif($order->status == 'delivered')
                                     <span class="badge badge-pill badge-warning" style="background: #2d8ebd;">delivered</span>
+
+                                        @if($order->return_order == 1)
+                                        <span class="badge badge-pill badge-warning" style="background: red">Return Requested</span>
+                                        @endif
+
                                     @elseif($order->status == 'cancel')
                                     <span class="badge badge-pill badge-warning" style="background: #9d488e;">cancel</span>
                                     @elseif($order->status == 'confirm')

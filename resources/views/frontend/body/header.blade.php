@@ -66,7 +66,7 @@
         <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder"> 
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
-          <div class="search-area">
+          <div class="search-area" style="display: none;">
             <form>
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">

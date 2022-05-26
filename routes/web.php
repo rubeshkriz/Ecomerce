@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ReturnController;
  
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
@@ -401,6 +402,15 @@ Route::prefix('reports')->group(function(){
 
 Route::prefix('alluser')->group(function(){
     Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+     
+});
+
+    // Adminreturn Order Routes 
+
+Route::prefix('return')->group(function(){
+    Route::get('/admin/request', [ReturnController::class, 'ReturnRequest'])->name('return.request');
+    Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnRequestApprove'])->name('return.approve');
+    Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all.request');
      
 });
 

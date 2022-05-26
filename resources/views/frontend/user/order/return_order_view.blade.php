@@ -24,10 +24,10 @@
                                 <label for=""> Invoice</label>
                             </td>
                             <td class="col-md-2">
-                                <label for=""> Order</label>
+                                <label for=""> Return reason</label>
                             </td>
                             <td class="col-md-1" style="width:30%;">
-                                <label for=""> Action</label>
+                                <label for=""> Order Status</label>
                             </td>
                         </tr>
 
@@ -46,15 +46,21 @@
                                 <label for=""> {{ $order->invoice_no }}</label>
                             </td>
                             <td class="col-md-2">
+                                <label for=""> {{ $order->return_reason }}</label>
+                            </td>
+                            <td class="col-md-2">
                                 <label for="">
-                                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }}</span>
+                                    @if($order->return_order == 0)
+                                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">No return Request</span>
+                                    @elseif($order->return_order == 1)
+                                    <span class="badge badge-pill badge-warning" style="background: #800000;">Pending</span>
                                     <span class="badge badge-pill badge-warning" style="background: red">Return Requested</span>
+                                    @elseif($order->return_order == 2)
+                                    <span class="badge badge-pill badge-warning" style="background: #008000;">Success</span>
+                                    @endif
                                 </label>
                             </td>
-                            <td class="col-md-1">
-                                <a href="{{ url('user/order_details/'.$order->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> View</a>
-                                <a href="{{ url('user/invoice-download/'.$order->id) }}" class="btn btn-danger btn-sm" style="margin-top: 5px;"><i class="fa fa-download" style="color:#fff;"></i> Invoice</a>
-                            </td>
+                            
                         </tr>
                         @endforeach
 
